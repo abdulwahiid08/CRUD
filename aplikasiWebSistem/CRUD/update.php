@@ -40,18 +40,23 @@ if (isset($_POST["submit"])) {
         <h1>Update Daftar Film</h1>
     </div>
 
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
 
-    <!-- Membuat sebuah inputan yang berisi id, untuk dikirm ke query function update -->
-    <input type="hidden" name="id" value="<?= $result["id"] ?>">
+        <!-- Membuat sebuah inputan yang berisi id, untuk dikirm ke query function update -->
+        <input type="hidden" name="id" value="<?= $result["id"] ?>">
+        <input type="hidden" name="gambarLama" value="<?= $result["gambar"] ?>">
         <ul>
             <li>
                 <label for="judul">Judul Film : </label>
                 <input type="text" name="judul" id="judul" placeholder="Input Judul Film" required value="<?= $result["judul"]; ?> ">
             </li>
             <li>
+
                 <label for="gambar">Gambar : </label>
-                <input type="text" name="gambar" id="gambar" placeholder="Masukkan Gambar" required value="<?= $result["gambar"]; ?> ">
+                <br>
+                <img src="../image/<?= $result["gambar"]; ?>" alt="" width="50">
+                <br>
+                <input type="file" name="gambar" id="gambar" placeholder="Masukkan Gambar" required>
             </li>
             <li>
                 <label for="waktu">Waktu : </label>

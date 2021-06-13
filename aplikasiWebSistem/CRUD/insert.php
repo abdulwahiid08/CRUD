@@ -3,12 +3,20 @@ require '../functiondb.php';
 
 // Cek Apakah tombol submit sudah dutekan atau belum
 if (isset($_POST["submit"])) {
+    
     // Cek apakah data berhasil di tambhakan atau tidak
     if (Tambah($_POST) > 0) {
-        echo "DATA BERHASIL DI INPUT";
-        header('Location: ../index.php');
+        // echo "DATA BERHASIL DI INPUT";
+        // header('Location: ../index.php');
+        echo "<script>
+                alert('Data Berhasil Ditambahkan')
+                document.location.href = '../index.php';
+            </script>";
     } else {
-        echo "DATA ADA YANG ERROR!";
+        //echo "DATA ADA YANG ERROR!";
+        echo "<script>
+                alert('Data Gagal Ditambahkan!')
+            </script>";
     }
     // var_dump($_POST);
 
@@ -58,28 +66,33 @@ if (isset($_POST["submit"])) {
         <h1>Tambah Daftar Film</h1>
     </div>
 
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         <ul>
             <li>
                 <label for="judul">Judul Film : </label>
                 <input type="text" name="judul" id="judul" placeholder="Input Judul Film" required>
             </li>
+            <br>
             <li>
                 <label for="gambar">Gambar : </label>
-                <input type="text" name="gambar" id="gambar" placeholder="Masukkan Gambar" required>
+                <input type="file" name="gambar" id="gambar" placeholder="Upload Gambar" >
             </li>
+            <br>
             <li>
                 <label for="waktu">Waktu : </label>
                 <input type="time" name="waktu" id="waktu" required>
             </li>
+            <br>
             <li>
                 <label for="gate">Gate : </label>
                 <input type="number" name="gate" id="gate" required>
             </li>
+            <br>
             <li>
                 <label for="harga">Harga : </label>
                 <input type="text" name="harga" id="harga" placeholder="Input Harga" required>
             </li>
+            <br>
             <li>
                 <button type="submit" name="submit">TAMBAH FILM</button>
             </li>

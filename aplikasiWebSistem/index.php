@@ -1,12 +1,12 @@
 <?php
-    require_once 'functiondb.php';
+require_once 'functiondb.php';
 
-    $result = query("SELECT * FROM data");
+$result = query("SELECT * FROM data");
 
-    // Tombol Cari Ditekan
-    if( isset($_POST["cari"]) ) {
-        $result = cari($_POST["keyword"]);
-    }
+// Tombol Cari Ditekan
+if (isset($_POST["cari"])) {
+    $result = cari($_POST["keyword"]);
+}
 
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,10 @@
     <div class="title">
         <h1>Daftar Film Hari Ini</h1>
     </div>
-
+    <div class="insert" style="text-align: center;">
+        <a href="CRUD/insert.php">+ Tambah Data Film</a>
+    </div>
+    <br>
     <!-- Membuat form Searching -->
     <form action="" method="POST">
         <input type="text" name="keyword" size="40" placeholder="Pencarian..." autocomplete="off">
@@ -59,9 +62,7 @@
         <?php } ?>
     </table>
     <br>
-    <div class="insert" style="text-align: center;">
-        <a href="CRUD/insert.php">+ Tambah Data Film</a>
-    </div>
+    
 </body>
 
 </html>
